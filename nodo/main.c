@@ -1,4 +1,4 @@
-#include <nodo.h>
+#include "nodo.h"
 #include <stdio.h>
 #include <stdlib>
 int main(){
