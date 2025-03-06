@@ -1,6 +1,6 @@
 #include "nodo.h"
 #include <stdio.h>
-#include <stdlib>
+#include <stdlib.h>
 int main(){
     nodo *primero=NULL;
     nodo *temp;
