@@ -4,9 +4,9 @@
 int main() {
     int m, n;
     printf("Ingrese el número de filas: ");
-    
+    scanf("%d", &m);
     printf("Ingrese el número de columnas: ");
-    
+    scanf("%d", &n);  
 
     int *matrix = (int *)calloc(m * n, sizeof(int));
     if (matrix == NULL) {
@@ -17,7 +17,7 @@ int main() {
     printf("Matriz inicializada con ceros:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            
+            printf("%d ", matrix[i * n + j]);
         }
         printf("\n");
     }
@@ -30,7 +30,7 @@ int main() {
     printf("Matriz actualizada:\n");
     for (int i = 0; i < m; i++) {
         for (int j = 0; j < n; j++) {
-            
+            printf("%d ", matrix[i * n + j]);
         }
         printf("\n");
     }
