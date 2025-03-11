@@ -18,7 +18,7 @@ int main() {
 
         if (count >= size) {
             size *= 2;
-            arr ; //utiliza realloc para cambiar el tamaño del arreglo
+            arr = (int *)realloc(arr, size * sizeof(int)); //utiliza realloc para cambiar el tamaño del arreglo
             if (arr == NULL) {
                 printf("Error: No se pudo reasignar memoria.\n");
                 return 1;
@@ -30,10 +30,11 @@ int main() {
 
     printf("La lista ingresada es: ");
     for (int i = 0; i < count; i++) {
-        //Imprime la lista
+        printf("%d ", arr[i]);  //Imprime la lista
     }
     printf("\n");
 
     //libera la memoria
+    free(arr);
     return 0;
 }
