@@ -2,53 +2,60 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Crea un tipo de dato estudiante que guarde el nombre del estudiante max. 40 caracteres y su edad
+// Define la estructura del estudiante
 typedef struct {
-    
+    char nombre[50];
+    int edad;
 } Estudiante;
 
 int main() {
-
     int size = 2;
-    // Crea un arreglo dinámico usando malloc de tamaño size
-    
-    //Si el arreglo es nulo imprime el mensaje
-    if ( == NULL) {
+    Estudiante *estudiantes = malloc(size * sizeof(Estudiante)); // Crea un arreglo dinámico de estudiantes
+
+    if (estudiantes == NULL) {
         printf("Error: No se pudo asignar memoria.\n");
         return 1;
     }
 
     int count = 0;
-    char nombre[50];
-    int edad;
     printf("Ingrese estudiantes (nombre y edad, ingrese 'fin' para terminar):\n");
+
     while (1) {
         printf("Nombre: ");
-        scanf("%s", nombre);
-        if (strcmp(nombre, "fin") == 0) break;
+        // Copia directamente el nombre ingresado al arreglo
+        scanf("%s", estudiantes[count].nombre);
+
+        if (strcmp(estudiantes[count].nombre, "fin") == 0)
+            break;
 
         printf("Edad: ");
-        scanf("%d", &edad);
+        scanf("%d", &estudiantes[count].edad);
 
-        if (count >= size) {
+        // Verifica si necesitas aumentar el tamaño del arreglo dinámico
+        if (count + 1 >= size) {
             size *= 2;
-            //Cambia el tamaño del arreglo
-            //Verifica nuevamente que si apunta a nulo se imprima el error
-            if ( == NULL) {
+            Estudiante *tmp = realloc(estudiantes, size * sizeof(Estudiante));
+
+            if (tmp == NULL) {
                 printf("Error: No se pudo reasignar memoria.\n");
+                free(estudiantes);
                 return 1;
             }
+            estudiantes = tmp;
         }
-        //copia el nombre leido en el nuevo estudiante y su edad
-        
+
         count++;
     }
 
     printf("Lista de estudiantes:\n");
     for (int i = 0; i < count; i++) {
-        
+        printf("Estudiante %d:\n", i + 1);
+        printf("Nombre: %s\n", estudiantes[i].nombre);
+        printf("Edad: %d\n", estudiantes[i].edad);
     }
 
-    //libera la memoria
+    // Libera la memoria al finalizar
+    free(estudiantes);
+
     return 0;
 }
