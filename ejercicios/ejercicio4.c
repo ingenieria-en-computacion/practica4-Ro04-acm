@@ -10,7 +10,7 @@ typedef struct {
 
 int main() {
     int size = 2;
-    Estudiante *estudiantes = malloc(size * sizeof(Estudiante)); // Crea un arreglo dinámico de estudiantes
+    Estudiante *estudiantes = malloc(size * sizeof(Estudiante)); // Crea un arreglo dinamico de estudiantes
 
     if (estudiantes == NULL) {
         printf("Error: No se pudo asignar memoria.\n");
@@ -31,7 +31,7 @@ int main() {
         printf("Edad: ");
         scanf("%d", &estudiantes[count].edad);
 
-        // Verifica si necesitas aumentar el tamaño del arreglo dinámico
+        // Verifica si necesitas aumentar el tamano del arreglo dinamico
         if (count + 1 >= size) {
             size *= 2;
             Estudiante *tmp = realloc(estudiantes, size * sizeof(Estudiante));
@@ -59,3 +59,4 @@ int main() {
 
     return 0;
 }
+
